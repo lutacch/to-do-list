@@ -14,6 +14,12 @@ const Home = () => {
 	}
 
 console.log(listaTareas);	
+
+const borrar = (id) => {
+	const listaFiltrada = listaTareas.filter((e,index) => index !== id)
+	setListaTareas(listaFiltrada);
+
+}
  return (
 	<div>
 		<h3>TO DO LIST</h3>
@@ -21,12 +27,34 @@ console.log(listaTareas);
 		nuevaTarea={nuevaTarea}
 		/></h1>
 		<h5><ToDoList/></h5>
-		{listaTareas.map(renderizarTarea=> <div>{renderizarTarea}</div>)}
+		{listaTareas.map((renderizarTarea, index) => <ToDoList tarea={renderizarTarea} borrar={borrar} id={index}/>)}
+
+
+{/* 		{listaTareas.map(renderizarTarea=> <div>{renderizarTarea}</div>)} */}
 		
 		</div>);
 }
 
 export default Home;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
