@@ -1,56 +1,28 @@
 import React, {useState} from "react";
+import TareaForm from "/workspace/to-do-list/src/js/component/tareaForm.jsx"
+import ToDoList from "/workspace/to-do-list/src/js/component/toDoList.jsx"
 
 
-//create your first component
+
+
 const Home = () => {
-    const [inputValue, setInputValue ] = useState('hola');
-	const [inputList, setInputList ] = useState([]);
-    
-	
-	const handleChange = (event) => {
-			const newValue= event.target.value;
-			setInputValue(newValue);
-		}
-	
-	const handleKeyDown = (e) =>{
-		if(e.keyCode === "13"){
-			const newList = [...inputList];
-			newList.push(inputValue);
-			setInputList(newList);
-		}
-		
-	}	
-
-
-
-/* 	const numbers = [65, 44, 12, 4];
-const newArr = numbers.map(myFunction)
-
-function myFunction(num) {
-  return num * 10;
-} */
-
-
-
-/* 
-const newArray = newList.map(unaFuncion)
-function unaFuncion(hola){
-	return "quetal"
-}  */
+	const [listaTareas, setListaTareas] = useState([]);
 	
 
- 
+	const nuevaTarea = (tarea) =>{
+		setListaTareas([tarea, ...listaTareas]);
+	}
 
-
-
-    return (
+console.log(listaTareas);	
+ return (
 	<div>
-		<h1>{inputValue}</h1>
-		<input type="text" onChange={handleChange} onKeyDown={handleKeyDown} value={inputValue}/>
-	
-	{/* 	<h1>{newList.map((inputValue) => <button key={inputValue}>{inputValue}</button>)}</h1>  */}
-	
-
+		<h3>TO DO LIST</h3>
+		<h1><TareaForm
+		nuevaTarea={nuevaTarea}
+		/></h1>
+		<h5><ToDoList/></h5>
+		{listaTareas.map(renderizarTarea=> <div>{renderizarTarea}</div>)}
+		
 		</div>);
 }
 
@@ -79,3 +51,62 @@ export default Home;
 		</div>
 	);
 }; */
+
+
+
+
+
+
+/* 	const numbers = [65, 44, 12, 4];
+const newArr = numbers.map(myFunction)
+
+function myFunction(num) {
+  return num * 10;
+} */
+
+
+
+/* 
+const newArray = newList.map(unaFuncion)
+function unaFuncion(hola){
+	return "quetal"
+}  */
+	
+
+/* 
+
+import React, {useState} from "react";
+
+
+//create your first component
+const Home = () => {
+    const [inputValue, setInputValue ] = useState('hola');
+	const [inputList, setInputList ] = useState([]);
+    
+	
+	const handleChange = (event) => {
+			const newValue= event.target.value;
+			setInputValue(newValue);
+		}
+	
+	const handleKeyDown = (e) =>{
+		if(e.keyCode === "13"){
+			const newList = [...inputList];
+			newList.push(inputValue);
+			setInputList(newList);
+		}
+		
+	}	
+
+ return (
+	<div>
+		<h1>{inputValue}</h1>
+		<input type="text" onChange={handleChange} onKeyDown={handleKeyDown} value={inputValue}/>
+	
+		<h1>{newList.map((inputValue) => <button key={inputValue}>{inputValue}</button>)}</h1> 
+	
+
+		</div>);
+}
+
+export default Home; */ 
